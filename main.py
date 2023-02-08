@@ -5,12 +5,9 @@
 # --- Imports ---
 
 import pygame as pg
+from Utills import snake_utills as utills
 
-# --- Pygame Initiate ---
-
-pg.init()
-
-# ---
+# --- Vars & Args ---
 
 size = [700, 700]
 title = f'PySnake'
@@ -18,19 +15,6 @@ icon = pg.image.load('Assets/icon.png')
 
 # ---
 
-pg.display.set_mode(size)
-pg.display.set_caption(title)
-pg.display.set_icon(icon)
+utills.main_process(size, title, icon)
 
 # ---
-
-running = True
-
-# ---
-
-while running:
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            running = False
-    
-    pg.display.flip()
