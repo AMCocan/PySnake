@@ -4,14 +4,13 @@
 
 # --- Imports ---
 
-import pygame as pg
 from Utills import snake_utills as utills
 
 # --- Vars & Args ---
 
 size = [700, 700]
 title = f'PySnake'
-icon = pg.image.load('Assets/icon.png')
+icon = utills.pg.image.load('Assets/icon.png')
 
 # ---
 
