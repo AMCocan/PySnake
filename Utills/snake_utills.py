@@ -21,6 +21,9 @@ def main_process(size, title, icon):
     pg.display.set_caption(title)
     pg.display.set_icon(icon)
 
+    # Main process loop condition
+    running = True
+
     # Create window and run main process here.
     while running:
 
