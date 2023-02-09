@@ -11,15 +11,21 @@ import sys as sy
 
 # --- main_process ---
 
-def main_process(size, title, icon):
+def main_process(size, title, icon, ui_colors):
 
     # Initialize Pygame.
     pg.init()
 
     # Read agrs and build window.
-    pg.display.set_mode(size)
+    bgw = pg.display.set_mode(size)
     pg.display.set_caption(title)
     pg.display.set_icon(icon)
+
+    # Set background color fill here.
+    pg.Surface.fill(bgw, ui_colors['background'])
+
+    # Set the framerate here.
+    frame_rate(30)
 
     # Main process loop condition
     running = True
@@ -32,21 +38,27 @@ def main_process(size, title, icon):
             if event.type == pg.QUIT:
 
                 running = False
+
+        player(bgw, ui_colors['player'])
+
+        pg.display.update()
     
-        pg.display.flip()
+    # Uninitialize everything and quit.
+    pg.quit()
+    quit()
 
 # --- frame_rate ---
 
 def frame_rate(x):
     
     # Set a static frame rate here.
-    pass
+    pg.time.Clock().tick(x)
 
 # --- player ---
 
-def player():
+def player(bgw, ui):
 
-    # Create player here.
-    pass
+    # Draw player here.
+    pg.draw.rect(bgw, ui, [345, 345, 10, 10])
 
 # ---
