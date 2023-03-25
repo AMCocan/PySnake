@@ -25,7 +25,7 @@ def main_process(size, title, icon, ui_colors):
     pg.Surface.fill(bgw, ui_colors['background'])
 
     # Set the framerate here.
-    frame_rate(30)
+    frame_rate(60)
 
     # Main process loop condition
     running = True
