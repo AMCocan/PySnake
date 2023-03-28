@@ -3,6 +3,8 @@
 # 2.08.2023
 
 # --- Imports ---
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' # Hides: 'Hello from the pygame community'
 
 import pygame as pg
 import random as rn
