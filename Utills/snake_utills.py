@@ -51,6 +51,8 @@ def main_process(size, title, icon, ui_colors):
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
+            elif keypress[pg.K_ESCAPE]:
+                running = False
 
         # Player movement called here.
         player_movement(keypress, running, pos_move_index, neg_move_index, player_pos)
@@ -75,9 +77,7 @@ def frame_rate(x):
 def player_movement(keypress, running, pos_move_index, neg_move_index, player_pos):
 
     # Listen and change player position.
-    if keypress[pg.K_ESCAPE]: # Work on this -- Now working rn. -- [!]
-        running = False
-    elif keypress[pg.K_w]:
+    if keypress[pg.K_w]:
         player_pos[1] += neg_move_index
     elif keypress[pg.K_a]:
         player_pos[0] += neg_move_index
