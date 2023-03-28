@@ -23,13 +23,17 @@ def main_process(size, title, icon, ui_colors):
     pg.display.set_caption(title)
     pg.display.set_icon(icon)
 
+    # Set player size here.
+    player_size = [10, 10]
+
     # Set the player initial position here.
     player_xpos_init = size[0]/2
     player_ypos_init = size[1]/2
 
     # Set player move index here.
-    pos_move_index = 2
-    neg_move_index = -2
+    player_move_index = [[-2, 2], [-2, 2]]
+    h_move_index = player_move_index[0]
+    v_move_index = player_move_index[1]
 
     # Create list variable for player position.
     player_pos = [player_xpos_init, player_ypos_init]
@@ -56,11 +60,14 @@ def main_process(size, title, icon, ui_colors):
             elif keypress[pg.K_ESCAPE]:
                 running = False
 
+        # Map edge detection called here.
+        map_edge(player_pos, size, player_size, h_move_index, v_move_index)
+
         # Player movement called here.
-        player_movement(keypress, running, pos_move_index, neg_move_index, player_pos)
+        player_movement(keypress, running, h_move_index, v_move_index, player_pos)
 
         # Player render called here.
-        player(bgw, ui_colors['player'], player_pos)
+        player(bgw, ui_colors['player'], player_pos, player_size)
         
         # Update the screen.
         pg.display.flip()
@@ -76,25 +83,48 @@ def frame_rate(x):
     pg.time.Clock().tick(x)
 
 # --- player_movement ---
-def player_movement(keypress, running, pos_move_index, neg_move_index, player_pos):
+def player_movement(keypress, running, h_move_index, v_move_index, player_pos):
 
     # Listen and change player position.
     if keypress[pg.K_w]:
-        player_pos[1] += neg_move_index
+        player_pos[1] += v_move_index[0]
     elif keypress[pg.K_a]:
-        player_pos[0] += neg_move_index
+        player_pos[0] += h_move_index[0]
     elif keypress[pg.K_s]:
-        player_pos[1] += pos_move_index
+        player_pos[1] += v_move_index[1]
     elif keypress[pg.K_d]:
-        player_pos[0] += pos_move_index
+        player_pos[0] += h_move_index[1]
     
     # Return list variable for player position.
     return(player_pos, running)
 
+# --- map_edge ---
+def map_edge(player_pos, size, player_size, h_move_index, v_move_index):
+    
+    # Edge detection here.
+    if player_pos[0] < 0:
+        h_move_index[0] = 0
+        player_pos[0] = 0
+    elif player_pos[0] > (size[0] - player_size[0]):
+        h_move_index[1] = 0
+        player_pos[0] = (size[0] - player_size[0])
+    elif player_pos[1] < 0:
+        v_move_index[0] = 0
+        player_pos[1] = 0
+    elif player_pos[1] > (size[1] - player_size[1]):
+        v_move_index[1] = 0
+        player_pos[1] = (size[1] - player_size[1])
+    elif player_pos[0] > 0 and player_pos[0] < (size[0] - player_size[0]):
+        h_move_index[0] = -2
+        h_move_index[1] = 2
+    elif player_pos[1] > 0 and player_pos[1] < (size[1] - player_size[1]):
+        v_move_index[0] = -2
+        v_move_index[1] = 2
+
 # --- player ---
-def player(bgw, ui, player_pos):
+def player(bgw, color, player_pos, player_size):
 
     # Draw player here.
-    pg.draw.rect(bgw, ui, [player_pos[0], player_pos[1], 10, 10])
+    pg.draw.rect(bgw, color, [player_pos[0], player_pos[1], player_size[0], player_size[1]])
 
 # ---
