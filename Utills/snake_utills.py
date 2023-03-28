@@ -7,9 +7,9 @@ from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' # Hides: 'Hello from the pygame community'
 
 import pygame as pg
-import random as rn
-import time as tm
-import sys as sy
+# import random as rn
+# import time as tm
+# import sys as sy
 
 # --- main_process ---
 
