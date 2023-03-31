@@ -58,8 +58,12 @@ def main_process(size, title, icon, ui_colors):
             if event.type == pg.QUIT:
                 running = False
             elif keypress[pg.K_ESCAPE]:
-                print(v_move_index, h_move_index)
                 running = False
+            
+            # Listen event for reset.
+            if keypress[pg.K_r]:
+                player_pos[0] = size[0]/2
+                player_pos[1] = size[1]/2
 
         # Map edge detection called here.
         map_edge(player_pos, size, player_size, h_move_index, v_move_index)
