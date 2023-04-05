@@ -69,7 +69,7 @@ def main_process(size, title, icon, ui_colors):
         map_edge(player_pos, size, player_size, h_move_index, v_move_index)
 
         # Player movement called here.
-        player_movement(keypress, running, h_move_index, v_move_index, player_pos)
+        player_movement(keypress, h_move_index, v_move_index, player_pos)
 
         # Player render called here.
         player(bgw, ui_colors['player'], player_pos, player_size)
@@ -88,9 +88,9 @@ def frame_rate(x):
     pg.time.Clock().tick(x)
 
 # --- player_movement ---
-def player_movement(keypress, running, h_move_index, v_move_index, player_pos):
+def player_movement(keypress, h_move_index, v_move_index, player_pos):
 
-    # Listen and change player position per diagonal. (BETA Feature)
+    # Listen and change player position.
     # if keypress[pg.K_w] and keypress[pg.K_d]:
     #     player_pos[1] += v_move_index[0]
     #     player_pos[0] += h_move_index[1]
@@ -103,8 +103,6 @@ def player_movement(keypress, running, h_move_index, v_move_index, player_pos):
     # elif keypress[pg.K_a] and keypress[pg.K_w]:
     #     player_pos[0] += h_move_index[0]
     #     player_pos[1] += v_move_index[0]
-    
-    # Listen and change player position per axis.
     if keypress[pg.K_w]:
         player_pos[1] += v_move_index[0]
     elif keypress[pg.K_a]:
@@ -115,7 +113,7 @@ def player_movement(keypress, running, h_move_index, v_move_index, player_pos):
         player_pos[0] += h_move_index[1]
     
     # Return list variable for player position.
-    return(player_pos, running)
+    return(player_pos)
 
 # --- map_edge ---
 def map_edge(player_pos, size, player_size, h_move_index, v_move_index):
