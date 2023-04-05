@@ -90,7 +90,21 @@ def frame_rate(x):
 # --- player_movement ---
 def player_movement(keypress, running, h_move_index, v_move_index, player_pos):
 
-    # Listen and change player position.
+    # Listen and change player position per diagonal. (BETA Feature)
+    # if keypress[pg.K_w] and keypress[pg.K_d]:
+    #     player_pos[1] += v_move_index[0]
+    #     player_pos[0] += h_move_index[1]
+    # elif keypress[pg.K_d] and keypress[pg.K_s]:
+    #     player_pos[0] += h_move_index[1]
+    #     player_pos[1] += v_move_index[1]
+    # elif keypress[pg.K_s] and keypress[pg.K_a]:
+    #     player_pos[1] += v_move_index[1]
+    #     player_pos[0] += h_move_index[0]
+    # elif keypress[pg.K_a] and keypress[pg.K_w]:
+    #     player_pos[0] += h_move_index[0]
+    #     player_pos[1] += v_move_index[0]
+    
+    # Listen and change player position per axis.
     if keypress[pg.K_w]:
         player_pos[1] += v_move_index[0]
     elif keypress[pg.K_a]:
