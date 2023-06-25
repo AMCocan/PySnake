@@ -4,7 +4,7 @@
 
 # --- Imports ---
 
-from Utills import snake_lib as lib
+from Library import snake_lib as lib
 
 # --- Vars & Args ---
 
