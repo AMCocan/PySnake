@@ -4,13 +4,13 @@
 
 # --- Imports ---
 
-from Utills import snake_utills as utills
+from Utills import snake_lib as lib
 
 # --- Vars & Args ---
 
 size = [700, 700]
 title = f'PySnake'
-icon = utills.pg.image.load('Assets/icon.png')
+icon = lib.pg.image.load('Assets/icon.png')
 
 ui_colors = {
     'background':(10, 10, 10), 
@@ -22,6 +22,6 @@ ui_colors = {
 
 # --- main_process Loop ---
 
-utills.main_process(size, title, icon, ui_colors)
+lib.main_process(size, title, icon, ui_colors)
 
 # ---
