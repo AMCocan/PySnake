@@ -4,13 +4,13 @@
 
 # --- Imports ---
 
-from Utills import snake_lib as lib
+from Library import snake_lib as lib
 
 # --- Vars & Args ---
 
 size = [700, 700]
 title = f'PySnake'
-icon = lib.pg.image.load('Assets/icon.png')
+icon = lib.pg.image.load('Assets/python.png')
 
 ui_colors = {
     'background':(10, 10, 10), 
